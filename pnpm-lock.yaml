@@ -1,6 +1,7 @@
 dependencies:
   '@ungap/custom-elements': 0.1.15
   core-js: 3.9.1
+  document-register-element: 1.13.1
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   tslib: 2.1.0
@@ -5675,6 +5676,14 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
+  /document-register-element/1.13.1:
+    dependencies:
+      lightercollective: 0.1.0
+    deprecated: V0 is gone and the best V1 polyfill is now @ungap/custom-elements
+    dev: false
+    requiresBuild: true
+    resolution:
+      integrity: sha512-92ZyLDKg9j4rOll//NNXj25f+8rAzOkYsGJonhugKwXfeqH7bzs8Ucpvey0WzZ2ZzKdrvW9RnUw3UyOZ/uhBFw==
   /dom-accessibility-api/0.5.4:
     dev: true
     resolution:
@@ -8957,6 +8966,11 @@ packages:
     dev: true
     resolution:
       integrity: sha512-7poZHRla+ae0eEButlwMrPpkXyhNVBf2EHePYWT0jyLnI6311/OXJkTI2sOIRungRpQgU2oDMpro5bSFPT5F0A==
+  /lightercollective/0.1.0:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-J9tg5uraYoQKaWbmrzDDexbG6hHnMcWS1qLYgJSWE+mpA3U5OCSeMUhb+K55otgZJ34oFdR0ECvdIb3xuO5JOQ==
   /lines-and-columns/1.1.6:
     dev: true
     resolution:
@@ -14051,6 +14065,7 @@ specifiers:
   babel-jest: 26.6.3
   core-js: ^3.9.1
   cypress: ^6.7.1
+  document-register-element: 1.13.1
   dotenv: 8.2.0
   eslint: 7.22.0
   eslint-config-prettier: 8.1.0

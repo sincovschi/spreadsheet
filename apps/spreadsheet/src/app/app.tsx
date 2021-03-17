@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import styles from './app.module.scss';
+import styles from "./app.module.scss";
 
-import { ReactComponent as Logo } from './logo.svg';
-import star from './star.svg';
+import { ReactComponent as Logo } from "./logo.svg";
+import star from "./star.svg";
+
+import { CommonComponents } from "@spreadsheet/common-components";
 
 export function App() {
   return (
@@ -13,6 +15,7 @@ export function App() {
         <h1>Welcome to spreadsheet!</h1>
       </header>
       <main>
+        <CommonComponents />
         <h2>Resources &amp; Tools</h2>
         <p>Thank you for using and showing some ♥ for Nx.</p>
         <div className="flex github-star-container">
@@ -21,7 +24,7 @@ export function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {' '}
+            {" "}
             If you like Nx, please give it a star:
             <div className="github-star-badge">
               <img src={star} className="material-icons" alt="" />

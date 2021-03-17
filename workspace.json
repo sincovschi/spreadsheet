@@ -1,23 +1,12 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
+  "cli": { "defaultCollection": "@nrwl/react" },
   "defaultProject": "spreadsheet",
   "generators": {
     "@nrwl/react": {
-      "application": {
-        "style": "scss",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "scss"
-      },
-      "library": {
-        "style": "scss",
-        "linter": "eslint"
-      }
+      "application": { "style": "scss", "linter": "eslint", "babel": true },
+      "component": { "style": "scss" },
+      "library": { "style": "scss", "linter": "eslint" }
     }
   },
   "projects": {
@@ -70,13 +59,9 @@
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "spreadsheet:build"
-          },
+          "options": { "buildTarget": "spreadsheet:build" },
           "configurations": {
-            "production": {
-              "buildTarget": "spreadsheet:build:production"
-            }
+            "production": { "buildTarget": "spreadsheet:build:production" }
           }
         },
         "lint": {
@@ -108,15 +93,34 @@
             "devServerTarget": "spreadsheet:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "spreadsheet:serve:production"
-            }
+            "production": { "devServerTarget": "spreadsheet:serve:production" }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/spreadsheet-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "common-components": {
+      "root": "libs/common-components",
+      "sourceRoot": "libs/common-components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common-components/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common-components"],
+          "options": {
+            "jestConfig": "libs/common-components/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
