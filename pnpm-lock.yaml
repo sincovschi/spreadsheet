@@ -23,7 +23,9 @@ devDependencies:
   '@storybook/addon-knobs': 6.1.21_e342ee84aa4c58264377ee43e7695221
   '@storybook/react': 6.1.21_cfdabd449e8f1c0e97ae2fe44d51b54f
   '@svgr/webpack': 5.5.0
+  '@testing-library/jest-dom': 5.11.9
   '@testing-library/react': 11.2.5_react-dom@17.0.1+react@17.0.1
+  '@testing-library/user-event': 13.0.1
   '@types/jest': 26.0.20
   '@types/node': 14.14.35
   '@types/react': 17.0.3
@@ -33,6 +35,7 @@ devDependencies:
   '@typescript-eslint/parser': 4.18.0_eslint@7.22.0+typescript@4.2.3
   babel-jest: 26.6.3_@babel+core@7.13.10
   babel-loader: 8.1.0_@babel+core@7.13.10
+  clsx: 1.1.1
   cypress: 6.7.1
   dotenv: 8.2.0
   eslint: 7.22.0
@@ -3595,6 +3598,23 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-v4GzWtltaiDE0yRikLlcLAfEiiK8+ptu6OuuIebm9GdC2XlZTNDPGEfM2UkEtnH7hr9TRq2sivT5EA9P1Oy7bw==
+  /@testing-library/jest-dom/5.11.9:
+    dependencies:
+      '@babel/runtime': 7.13.10
+      '@types/testing-library__jest-dom': 5.9.5
+      aria-query: 4.2.2
+      chalk: 3.0.0
+      css: 3.0.0
+      css.escape: 1.5.1
+      lodash: 4.17.21
+      redent: 3.0.0
+    dev: true
+    engines:
+      node: '>=8'
+      npm: '>=6'
+      yarn: '>=1'
+    resolution:
+      integrity: sha512-Mn2gnA9d1wStlAIT2NU8J15LNob0YFBVjs2aEQ3j8rsfRQo+lAs7/ui1i2TGaJjapLmuNPLTsrm+nPjmZDwpcQ==
   /@testing-library/react/11.2.5_react-dom@17.0.1+react@17.0.1:
     dependencies:
       '@babel/runtime': 7.13.10
@@ -3609,6 +3629,17 @@ packages:
       react-dom: '*'
     resolution:
       integrity: sha512-yEx7oIa/UWLe2F2dqK0FtMF9sJWNXD+2PPtp39BvE0Kh9MJ9Kl0HrZAgEuhUJR+Lx8Di6Xz+rKwSdEPY2UV8ZQ==
+  /@testing-library/user-event/13.0.1:
+    dependencies:
+      '@babel/runtime': 7.13.10
+    dev: true
+    engines:
+      node: '>=10'
+      npm: '>=6'
+    peerDependencies:
+      '@testing-library/dom': '>=7.21.4'
+    resolution:
+      integrity: sha512-7n3Y5Vohib6yVFW60JlCvQOqBDIlE1SRyo78nmoHwePAg3SVhnfyOI30RYNj3yFF7qy7e0uVlewzTyvNxyJjEA==
   /@tootallnate/once/1.1.2:
     dev: true
     engines:
@@ -3870,6 +3901,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-W+bw9ds02rAQaMvaLYxAbJ6cvguW/iJXNT6lTssS1ps6QdrMKttqEAMEG/b5CR8TZl3/L7/lH0ZV5nNR1LXikA==
+  /@types/testing-library__jest-dom/5.9.5:
+    dependencies:
+      '@types/jest': 26.0.20
+    dev: true
+    resolution:
+      integrity: sha512-ggn3ws+yRbOHog9GxnXiEZ/35Mow6YtPZpd7Z5mKDeZS/o7zx3yAle0ov/wjhVB5QT4N2Dt+GNoGCdqkBGCajQ==
   /@types/uglify-js/3.13.0:
     dependencies:
       source-map: 0.6.1
@@ -6668,6 +6705,18 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-ACUm3L0/jiZTqfzRM3Hi9Q8eZqd6IK37mMWPLz9PJxkLWllYeRf+EHUSHYEtFop2Eqytaq1FizFVh7XfBnXCDQ==
+  /css.escape/1.5.1:
+    dev: true
+    resolution:
+      integrity: sha1-QuJ9T6BK4y+TGktNQZH6nN3ul8s=
+  /css/3.0.0:
+    dependencies:
+      inherits: 2.0.4
+      source-map: 0.6.1
+      source-map-resolve: 0.6.0
+    dev: true
+    resolution:
+      integrity: sha512-DG9pFfwOrzc+hawpmqX/dHYHJG+Bsdb0klhyi1sDneOgGOXy9wQIC8hzyVp1e4NRYDBdxcylvywPkkXCHAzTyQ==
   /cssesc/3.0.0:
     dev: true
     engines:
@@ -14017,6 +14066,15 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
+  /redent/3.0.0:
+    dependencies:
+      indent-string: 4.0.0
+      strip-indent: 3.0.0
+    dev: true
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==
   /refractor/3.3.1:
     dependencies:
       hastscript: 6.0.0
@@ -14967,6 +15025,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==
+  /source-map-resolve/0.6.0:
+    dependencies:
+      atob: 2.1.2
+      decode-uri-component: 0.2.0
+    dev: true
+    resolution:
+      integrity: sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w==
   /source-map-support/0.5.16:
     dependencies:
       buffer-from: 1.1.1
@@ -17026,7 +17091,9 @@ specifiers:
   '@storybook/addon-knobs': ^6.1.11
   '@storybook/react': ^6.1.11
   '@svgr/webpack': ^5.4.0
+  '@testing-library/jest-dom': ^5.11.9
   '@testing-library/react': 11.2.5
+  '@testing-library/user-event': ^13.0.1
   '@types/jest': 26.0.20
   '@types/node': 14.14.35
   '@types/react': 17.0.3
@@ -17036,6 +17103,7 @@ specifiers:
   '@typescript-eslint/parser': 4.18.0
   babel-jest: 26.6.3
   babel-loader: 8.1.0
+  clsx: ^1.1.1
   core-js: ^3.9.1
   cypress: ^6.7.1
   document-register-element: 1.13.1
