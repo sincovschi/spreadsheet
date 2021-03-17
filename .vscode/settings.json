@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "spreadsheet",
-        "com-com"
+        "com-com",
+        "ss-com"
     ]
 }

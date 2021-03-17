@@ -143,6 +143,29 @@
           "configurations": { "ci": { "quiet": true } }
         }
       }
+    },
+    "spreadsheet-components": {
+      "root": "libs/spreadsheet/components",
+      "sourceRoot": "libs/spreadsheet/components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/spreadsheet/components/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/spreadsheet/components"],
+          "options": {
+            "jestConfig": "libs/spreadsheet/components/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

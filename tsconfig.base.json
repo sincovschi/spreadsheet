@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@spreadsheet/common-components": ["libs/common-components/src/index.ts"]
+      "@spreadsheet/common-components": ["libs/common-components/src/index.ts"],
+      "@spreadsheet/components": ["libs/spreadsheet/components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

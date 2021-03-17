@@ -26,6 +26,7 @@
   "projects": {
     "spreadsheet": { "tags": [] },
     "spreadsheet-e2e": { "tags": [], "implicitDependencies": ["spreadsheet"] },
-    "common-components": { "tags": [] }
+    "common-components": { "tags": [] },
+    "spreadsheet-components": { "tags": [] }
   }
 }
