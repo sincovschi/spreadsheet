@@ -1,2 +1,2 @@
-export * from "./lib/redux/table.slice";
-export * from "./lib/spreadsheet-components";
+export * from "./lib/new-column/new-column";
+export * from "./lib/redux";

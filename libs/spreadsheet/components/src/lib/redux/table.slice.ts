@@ -6,12 +6,14 @@ import {
   EntityState,
   PayloadAction,
 } from "@reduxjs/toolkit";
+import { RootState } from "@spreadsheet/components";
 
 export const TABLE_FEATURE_KEY = "table";
 
 /*
  * Update these interfaces according to your requirements.
  */
+
 export interface TableEntity {
   id: number;
 }
@@ -125,9 +127,8 @@ export const tableActions = tableSlice.actions;
  */
 const { selectAll, selectEntities } = tableAdapter.getSelectors();
 
-export const getTableState = (
-  rootState: Record<string, TableState>,
-): TableState => rootState[TABLE_FEATURE_KEY];
+export const getTableState = (rootState: RootState): TableState =>
+  rootState[TABLE_FEATURE_KEY];
 
 export const selectAllTable = createSelector(getTableState, selectAll);
 

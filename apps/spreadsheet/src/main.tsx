@@ -4,28 +4,16 @@ import ReactDOM from "react-dom";
 import App from "./app/app";
 
 import { BrowserRouter } from "react-router-dom";
-
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
-import { TABLE_FEATURE_KEY, tableReducer } from "@spreadsheet/components";
-
-const store = configureStore({
-  reducer: { [TABLE_FEATURE_KEY]: tableReducer },
-  // Additional middleware can be passed to this array
-  middleware: [...getDefaultMiddleware()],
-  devTools: process.env.NODE_ENV !== "production",
-  // Optional Redux store enhancers
-  enhancers: [],
-});
+import { store } from "@spreadsheet/components";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </React.StrictMode>
-  </Provider>,
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root"),
 );
