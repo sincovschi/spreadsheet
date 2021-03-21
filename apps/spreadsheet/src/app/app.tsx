@@ -6,7 +6,7 @@ import { Box, Divider, Grid, Paper, Typography } from "@material-ui/core";
 
 import { Route, Link } from "react-router-dom";
 
-import { NewColumn } from "@spreadsheet/components";
+import { NewColumn, Table } from "@spreadsheet/components";
 
 export function App() {
   return (
@@ -29,16 +29,7 @@ export function App() {
         <Divider />
       </Box>
 
-      <Route
-        path="/"
-        exact
-        render={() => (
-          <div>
-            This is the generated root route.{" "}
-            <Link to="/page-2">Click here for page 2.</Link>
-          </div>
-        )}
-      />
+      <Route path="/" exact component={Table} />
 
       <Route path="/new-column" component={NewColumn} />
     </Paper>

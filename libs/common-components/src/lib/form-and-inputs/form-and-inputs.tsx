@@ -324,7 +324,8 @@ Form.HiddenInput = function FormHiddenInput({
       value={watchedValue ?? value}
       {...rest}
       inputRef={register()}
-      type={"hidden"}
+      type={"text"}
+      style={{ display: "none" }}
     />
   );
 };

@@ -1,12 +1,10 @@
 import {
   createAsyncThunk,
   createEntityAdapter,
-  createSelector,
   createSlice,
   EntityState,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { RootState } from "@spreadsheet/components";
 
 export const TABLE_FEATURE_KEY = "table";
 
@@ -14,16 +12,24 @@ export const TABLE_FEATURE_KEY = "table";
  * Update these interfaces according to your requirements.
  */
 
-export interface TableEntity {
+export interface ColmunEntity extends Record<string, unknown> {
   id: number;
+  type: "text" | "date" | "number";
+  required: boolean;
+  rows: RowEntity[];
 }
 
-export interface TableState extends EntityState<TableEntity> {
+export interface RowEntity {
+  id: number;
+  content: string;
+}
+
+export interface TableState extends EntityState<ColmunEntity> {
   loadingStatus: "not loaded" | "loading" | "loaded" | "error";
   error?: string | null;
 }
 
-export const tableAdapter = createEntityAdapter<TableEntity>();
+export const tableAdapter = createEntityAdapter<ColmunEntity>();
 
 /**
  * Export an effect using createAsyncThunk from
@@ -64,8 +70,9 @@ export const tableSlice = createSlice({
   initialState: initialTableState,
   reducers: {
     add: tableAdapter.addOne,
+    update: tableAdapter.updateOne,
     remove: tableAdapter.removeOne,
-    // ...
+    removeAll: tableAdapter.removeAll,
   },
   extraReducers: (builder) => {
     builder
@@ -74,7 +81,7 @@ export const tableSlice = createSlice({
       })
       .addCase(
         fetchTable.fulfilled,
-        (state: TableState, action: PayloadAction<TableEntity[]>) => {
+        (state: TableState, action: PayloadAction<ColmunEntity[]>) => {
           tableAdapter.setAll(state, action.payload);
           state.loadingStatus = "loaded";
         },
@@ -109,7 +116,7 @@ export const tableReducer = tableSlice.reducer;
  *
  * See: https://react-redux.js.org/next/api/hooks#usedispatch
  */
-export const tableActions = tableSlice.actions;
+export const actions = tableSlice.actions;
 
 /*
  * Export selectors to query state. For use with the `useSelector` hook.
@@ -125,14 +132,10 @@ export const tableActions = tableSlice.actions;
  *
  * See: https://react-redux.js.org/next/api/hooks#useselector
  */
-const { selectAll, selectEntities } = tableAdapter.getSelectors();
 
-export const getTableState = (rootState: RootState): TableState =>
+export const getTableState = (rootState: any): TableState =>
   rootState[TABLE_FEATURE_KEY];
 
-export const selectAllTable = createSelector(getTableState, selectAll);
-
-export const selectTableEntities = createSelector(
-  getTableState,
-  selectEntities,
+export const selectors = tableAdapter.getSelectors(
+  (state: any) => state[TABLE_FEATURE_KEY],
 );
