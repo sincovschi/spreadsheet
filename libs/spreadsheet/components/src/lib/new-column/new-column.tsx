@@ -34,11 +34,24 @@ export function NewColumn(props: NewColumnProps) {
       onSubmit={onSubmit}
       defaultValues={{
         id: random5Digits(),
+        name: "",
         type: "text",
         required: false,
       }}
     >
       <Form.HiddenInput name={"id"} />
+      <Form.TextInput
+        label={"Column title:"}
+        name={"name"}
+        fieldValidate={{
+          required: true,
+          minLength: {
+            value: 3,
+            message: "Minimum of 3 characters is required.",
+          },
+        }}
+      />
+      <br />
       <Form.Select
         label={"Select column type:"}
         name={"type"}

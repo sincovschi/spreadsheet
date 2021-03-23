@@ -273,11 +273,12 @@ exports[`Form should render and match snapshot 1`] = `
   </div>
   <div
     class="MuiInputBase-root MuiInput-root MuiInput-underline"
+    style="display: none;"
   >
     <input
       class="MuiInputBase-input MuiInput-input"
       name="hiddenInput"
-      type="hidden"
+      type="text"
       value="hidden-value"
     />
   </div>

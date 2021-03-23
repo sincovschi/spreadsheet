@@ -14,6 +14,7 @@ export const TABLE_FEATURE_KEY = "table";
 
 export interface ColmunEntity extends Record<string, unknown> {
   id: number;
+  name: string;
   type: "text" | "date" | "number";
   required: boolean;
   rows: RowEntity[];
