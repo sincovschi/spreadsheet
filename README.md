@@ -15,6 +15,3 @@ Terminal commands for unit testing:
 Terminal commands for storybook:
 
     pnpm nx storybook common-components
-
-P.S. Project may miss some small bits from requirements due to lack of time, not the skills.
-Best regards, Eugene.
