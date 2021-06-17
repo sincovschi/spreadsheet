@@ -1,15 +1,84 @@
 {
   "version": 2,
-  "cli": { "defaultCollection": "@nrwl/react" },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
   "defaultProject": "spreadsheet",
   "generators": {
     "@nrwl/react": {
-      "application": { "style": "scss", "linter": "eslint", "babel": true },
-      "component": { "style": "scss" },
-      "library": { "style": "scss", "linter": "eslint" }
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      }
     }
   },
   "projects": {
+    "common-components": {
+      "root": "libs/common-components",
+      "sourceRoot": "libs/common-components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/common-components/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/common-components"
+          ],
+          "options": {
+            "jestConfig": "libs/common-components/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/common-components/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "uiFramework": "@storybook/react",
+            "outputPath": "dist/storybook/common-components",
+            "config": {
+              "configFolder": "libs/common-components/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
     "spreadsheet": {
       "root": "apps/spreadsheet",
       "sourceRoot": "apps/spreadsheet/src",
@@ -17,7 +86,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/spreadsheet",
             "index": "apps/spreadsheet/src/index.html",
@@ -28,7 +99,9 @@
               "apps/spreadsheet/src/favicon.ico",
               "apps/spreadsheet/src/assets"
             ],
-            "styles": ["apps/spreadsheet/src/styles.scss"],
+            "styles": [
+              "apps/spreadsheet/src/styles.scss"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -59,88 +132,32 @@
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
-          "options": { "buildTarget": "spreadsheet:build" },
+          "options": {
+            "buildTarget": "spreadsheet:build"
+          },
           "configurations": {
-            "production": { "buildTarget": "spreadsheet:build:production" }
+            "production": {
+              "buildTarget": "spreadsheet:build:production"
+            }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/spreadsheet/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/spreadsheet/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/spreadsheet"],
+          "outputs": [
+            "coverage/apps/spreadsheet"
+          ],
           "options": {
             "jestConfig": "apps/spreadsheet/jest.config.js",
             "passWithNoTests": true
           }
-        }
-      }
-    },
-    "spreadsheet-e2e": {
-      "root": "apps/spreadsheet-e2e",
-      "sourceRoot": "apps/spreadsheet-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/spreadsheet-e2e/cypress.json",
-            "tsConfig": "apps/spreadsheet-e2e/tsconfig.e2e.json",
-            "devServerTarget": "spreadsheet:serve"
-          },
-          "configurations": {
-            "production": { "devServerTarget": "spreadsheet:serve:production" }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/spreadsheet-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "common-components": {
-      "root": "libs/common-components",
-      "sourceRoot": "libs/common-components/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/common-components/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/common-components"],
-          "options": {
-            "jestConfig": "libs/common-components/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "storybook": {
-          "executor": "@nrwl/storybook:storybook",
-          "options": {
-            "uiFramework": "@storybook/react",
-            "port": 4400,
-            "config": { "configFolder": "libs/common-components/.storybook" }
-          },
-          "configurations": { "ci": { "quiet": true } }
-        },
-        "build-storybook": {
-          "executor": "@nrwl/storybook:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "uiFramework": "@storybook/react",
-            "outputPath": "dist/storybook/common-components",
-            "config": { "configFolder": "libs/common-components/.storybook" }
-          },
-          "configurations": { "ci": { "quiet": true } }
         }
       }
     },
@@ -159,10 +176,40 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/spreadsheet/components"],
+          "outputs": [
+            "coverage/libs/spreadsheet/components"
+          ],
           "options": {
             "jestConfig": "libs/spreadsheet/components/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "spreadsheet-e2e": {
+      "root": "apps/spreadsheet-e2e",
+      "sourceRoot": "apps/spreadsheet-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/spreadsheet-e2e/cypress.json",
+            "tsConfig": "apps/spreadsheet-e2e/tsconfig.e2e.json",
+            "devServerTarget": "spreadsheet:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "spreadsheet:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/spreadsheet-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }

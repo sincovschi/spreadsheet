@@ -1,13 +1,18 @@
 {
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": { "defaultBase": "master" },
+  "affected": {
+    "defaultBase": "master"
+  },
   "npmScope": "spreadsheet",
   "tasksRunnerOptions": {
     "default": {
@@ -24,9 +29,18 @@
     }
   },
   "projects": {
-    "spreadsheet": { "tags": [] },
-    "spreadsheet-e2e": { "tags": [], "implicitDependencies": ["spreadsheet"] },
-    "common-components": { "tags": [] },
-    "spreadsheet-components": { "tags": [] }
+    "common-components": {
+      "tags": []
+    },
+    "spreadsheet": {
+      "tags": []
+    },
+    "spreadsheet-components": {
+      "tags": []
+    },
+    "spreadsheet-e2e": {
+      "tags": [],
+      "implicitDependencies": ["spreadsheet"]
+    }
   }
 }
